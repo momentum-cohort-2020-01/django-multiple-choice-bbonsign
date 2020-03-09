@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0cb9a9d50d7eae6daf3d6e848daf0a9e3806f5ab9a509fc0585a9a61aef52e2f"
+            "sha256": "f8070dfa0a6e11533d120107292ae8e302029aa5c8f12e3447a4678afcd510ee"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -76,6 +76,14 @@
             ],
             "index": "pypi",
             "version": "==2.2.8"
+        },
+        "django-registration-redux": {
+            "hashes": [
+                "sha256:1aaf08c9c16b7f185ffa36e7251c7a6149fe953f5af21c4f1e01cbe03902520b",
+                "sha256:5998a8dbee2a84d66cd56a61c4fb6b1a5be801b083fb1ef53ba04939d8a44606"
+            ],
+            "index": "pypi",
+            "version": "==2.7"
         },
         "ipdb": {
             "hashes": [

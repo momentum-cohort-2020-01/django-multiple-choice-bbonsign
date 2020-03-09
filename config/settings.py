@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 
     # Project-specific
     'users',
+    'snippets',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,8 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
+
+# For django-registration-redux
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ACCOUNT_ACTIVATION_DAYS = 1
+LOGIN_REDIRECT_URL = '/'

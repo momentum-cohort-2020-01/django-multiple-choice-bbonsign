@@ -1,3 +1,9 @@
 from django.db import models
 
-# Create your models here.
+from users.models import User
+
+class Tag(models.Model):
+    pass
+
+class Snippet(models.Model):
+    pass

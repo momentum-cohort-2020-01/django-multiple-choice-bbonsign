@@ -1,3 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
-# Create your views here.
+from users.models import User
+from .models import Snippet, Tag
+# from .forms import
+
