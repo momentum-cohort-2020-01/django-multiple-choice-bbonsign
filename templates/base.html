@@ -20,22 +20,29 @@
     <h1 class="title">SnippetSnap</h1>
 
     {% if user.is_authenticated %}
-      <div class="logged-in">
-        <a href="/accounts/logout">Logout</a>
-        <input class="search" placeholder="Find a snippet...">
-      </div>
+    <div class="logged-in">
+      <a href="/accounts/logout">Logout</a>
+      <input class="search" placeholder="Find a snippet...">
+    </div>
     {% else %}
-      <div class="logged-out">
-        <a href="/accounts/register">Register</a>
-        |
-        <a href="/accounts/login">Login</a>
-      </div>
+    <div class="logged-out">
+      <a href="/accounts/register">Register</a>
+      |
+      <a href="/accounts/login">Login</a>
+    </div>
     {% endif %}
   </header>
   {% endblock header %}
 
-  {% block content %}
 
+  {% block content %}
+  <div class="box">
+    Sample text.
+  </div>
+
+  {% if user.is_authenticated %}
+  <div class="show-user">Logged in as: {{user.username}}</div>
+  {% endif %}
   {% endblock content %}
 
 </body>

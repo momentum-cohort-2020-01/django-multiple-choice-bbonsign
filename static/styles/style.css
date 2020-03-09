@@ -34,14 +34,21 @@ a {
   font-family: 'Source Code Pro', monospace;
 }
 
-.logged-out {
+.logged-out {}
 
+.logged-in {}
+
+.search {}
+
+.box {
+  margin: 1rem;
+  width: 45%;
+  height: 300px;
+  padding: 1rem;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
 }
 
-.logged-in {
-
-}
-
-.search {
-
+.show-user {
+  text-align: center;
 }
