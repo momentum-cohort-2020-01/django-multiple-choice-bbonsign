@@ -1,0 +1,47 @@
+:root {
+  --main-bg-color: whitesmoke;
+  --header-bg-color: rgb(0, 16, 37);
+  --title-color: rgb(211, 229, 250);
+  --main-text-color: rgb(0, 16, 37);
+  --description-color: #288691;
+  --accent-color: rgb(83, 178, 216);
+  --link-color: rgb(94, 71, 121);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.header {
+  background-color: var(--header-bg-color);
+  color: var(--title-color);
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 3rem;
+  width: unset;
+}
+
+.title {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.logged-out {
+
+}
+
+.logged-in {
+
+}
+
+.search {
+
+}

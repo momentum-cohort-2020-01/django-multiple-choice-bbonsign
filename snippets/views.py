@@ -4,3 +4,6 @@ from users.models import User
 from .models import Snippet, Tag
 # from .forms import
 
+
+def test(request):
+    return render(request, 'base.html', context={})
