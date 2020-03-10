@@ -50,11 +50,17 @@ a {
 .snippet-item {
   margin: 1rem;
   width: 40%;
+  min-width: 350px;
   padding: 1rem;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
+  font-size: .8rem;
 }
 
 .show-user {
   text-align: center;
+}
+
+.code-toolbar {
+  border-radius: 3px;
 }

@@ -5,12 +5,18 @@
 
 <div class="snippet-list">
 
-    {% for snippet in snippets %}
-    <div class="snippet-item">
-        Sample text.
-    </div>
+  {% for snippet in snippets %}
+  <div class="snippet-item">
+    <h4>{{snippet.title}}</h4>
 
-    {% enfor %}
+    <figure class="code-fig">
+      <pre>
+<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code}}</code>
+</pre>
+    </figure>
+  </div>
+
+  {% endfor %}
 
 </div>
 

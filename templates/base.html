@@ -9,8 +9,13 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,700&display=swap" rel="stylesheet">
   {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/prism.css' %}">
   <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-  {% block title %}<title>SnippetSnap</title>{% endblock title %}
+  <script src="{% static 'js/prism.js' %}" defer></script>
+
+  {% block title %}
+    <title>SnippetSnap</title>
+  {% endblock title %}
 </head>
 
 <body>
