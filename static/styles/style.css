@@ -48,7 +48,12 @@ a {
 
 .logged-in {}
 
-.search {}
+.logout {
+  margin-right: 1rem;
+}
+
+.search {
+}
 
 .snippet-list {
   display: flex;

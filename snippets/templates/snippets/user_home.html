@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 
 <div class="snippet-list">
@@ -11,12 +10,11 @@
       <h4 class="snippet-title-preview"><span>{{snippet.title}}</span> <span class="preview">Preview</span></h4>
 
       <figure class="code-fig">
-        <pre class="line-numbers">
-<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview|safe}}</code>
-</pre>
+        <pre class="line-numbers"><code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview|safe}}</code>
+        </pre>
       </figure>
     </a>
-    </div>
+  </div>
   {% endfor %}
 
 </div>
