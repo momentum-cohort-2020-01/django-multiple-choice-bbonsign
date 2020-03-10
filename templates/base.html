@@ -36,14 +36,12 @@
 
 
   {% block content %}
-  <div class="box">
-    Sample text.
-  </div>
+  {% endblock content %}
+
 
   {% if user.is_authenticated %}
   <div class="show-user">Logged in as: {{user.username}}</div>
   {% endif %}
-  {% endblock content %}
 
 </body>
 

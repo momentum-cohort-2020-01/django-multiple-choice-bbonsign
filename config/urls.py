@@ -7,7 +7,7 @@ from snippets import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
-    path('', views.test, name='test'),
+    path('', views.user_home, name='user_home'),
 ]
 
 if settings.DEBUG:
