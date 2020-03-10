@@ -8,8 +8,8 @@ function main () {
 function copyEvent (event) {
   const copied = document.querySelector('.hidden')
   const copy = document.querySelector('.visible')
-  switchHidden(hidden = copied, visible = copy)
-  setTimeout(() => { switchHidden(hidden=copy, visible=copied) }, 1000)
+  switchHidden(copied, copy)
+  setTimeout(() => { switchHidden(copy, copied) }, 1500)
   console.log('g')
 }
 

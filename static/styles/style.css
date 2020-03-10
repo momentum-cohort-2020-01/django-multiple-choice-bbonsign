@@ -94,6 +94,10 @@ a {
   display: none;
 }
 
+.green {
+  color: green;
+}
+
 .preview {
   color: grey;
   font-size: .6rem;
