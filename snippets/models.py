@@ -43,7 +43,7 @@ class Snippet(models.Model):
     code = models.TextField(help_text='The code of the snippet')
     copies = models.PositiveIntegerField(default=0,
                                          help_text='Number of times a user has copied the snippet to clipboard')
-    tags = models.ManyToManyField(to=Tag, related_name='snippets', blank=True, null=True)
+    tags = models.ManyToManyField(to=Tag, related_name='snippets', blank=True)
     public = models.BooleanField(default=False,
                                  help_text='True if the user wants the snippet to be visible to other users')
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE,
