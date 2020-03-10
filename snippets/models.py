@@ -55,3 +55,16 @@ class Snippet(models.Model):
 
     def __str__(self):
         return f"{self.owner.id}'s {self.language.name} snippet:{self.id}"
+
+    @property
+    def preview(self):
+        limit = 15
+        count = 0
+        code = self.code
+        preview = ''
+        for char in code:
+            if char == '\n':
+                count += 1
+            if count < limit:
+                preview += char
+        return preview

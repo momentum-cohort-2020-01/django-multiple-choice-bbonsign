@@ -10,8 +10,8 @@
     <h4>{{snippet.title}}</h4>
 
     <figure class="code-fig">
-      <pre>
-<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code}}</code>
+      <pre class="line-numbers">
+<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview|safe}}</code>
 </pre>
     </figure>
   </div>
