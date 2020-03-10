@@ -15,6 +15,13 @@ def user_home(request):
 
 
 @login_required
+def snippet_detail(request, snip_id):
+    snippet = Snippet.objects.get(id=snip_id)
+    context = {'snippet': snippet}
+    return render(request, 'snippets/snippet_detail.html', context=context)
+
+
+@login_required
 def add_snippet(request):
     if request.method == 'POST':
         form = SnippetForm(request.POST)

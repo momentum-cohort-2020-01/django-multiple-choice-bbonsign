@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="user-home-container">
+    <div class="snippet-item">
+        <h4>{{snippet.title}}</h4>
+
+        <figure class="code-fig">
+            <pre class="line-numbers">
+<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code|safe}}</code>
+</pre>
+        </figure>
+    </div>
+</div>
+
+{% endblock content %}

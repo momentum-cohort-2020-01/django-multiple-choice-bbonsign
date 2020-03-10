@@ -3,10 +3,9 @@
 
 <head>
   {% block meta %}
+  {% endblock meta %}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% endblock meta %}
-
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500,700&display=swap" rel="stylesheet">
   {% load static %}
   <link rel="stylesheet" href="{% static 'styles/prism.css' %}">
@@ -22,7 +21,7 @@
 
   {% block header %}
   <header class="header">
-    <h1 class="title">SnippetSnap</h1>
+    <h1 class="title"><a href="{% url 'user_home' %}">>SnippetSnap</a></h1>
 
     {% if user.is_authenticated %}
     <div class="logged-in">
