@@ -24,12 +24,19 @@ def snippet_detail(request, snip_id):
 @login_required
 def fork(request, snip_id):
     user = request.user
-    new_snippet = Snippet.objects.get(id=snip_id)
+    snippet = Snippet.objects.get(id=snip_id)
+    if user == snippet.owner:
+        return redirect('user_home')
+    new_snippet = snippet
     new_snippet.pk = None
     new_snippet.owner = user
     new_snippet.parent = Snippet.objects.get(id=snip_id)
     new_snippet.save()
-    return redirect('snippet_detail', new_snippet.id)
+    snippet.copies += 1
+    snippet.save()
+    context = {'snippet': new_snippet, 'message': "You're cloned snippet:"}
+    return render(request, 'snippets/snippet_detail.html', context=context)
+    # return redirect('snippet_detail', new_snippet.id)
 
 
 @login_required

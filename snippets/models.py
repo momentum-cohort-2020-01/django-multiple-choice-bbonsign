@@ -50,6 +50,7 @@ class Snippet(models.Model):
                               related_name='snippets',
                               help_text='The user who owns this snippet')
     parent = models.ForeignKey(to='Snippet', on_delete=models.SET_NULL,
+                               related_name='children',
                                null=True, blank=True,
                                help_text='The snippet this is forked from')
 
@@ -68,3 +69,15 @@ class Snippet(models.Model):
             if count < limit:
                 preview += char
         return preview
+
+#     @property
+#     def descendent_tree(self):
+#         for snippet in self.children
+
+
+# class Tree:
+#     def __init__(self, children):
+#         self.children = children
+
+#     def __str__(self):
+#         return f"Tree with {len(self.children)} children"

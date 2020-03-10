@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 
+
 {% block content %}
+{% if message %}
+<div class="message">{{message}}</div>
+{% endif %}
+
 <div class="user-home-container">
     <div class="snippet-item">
         <div class="detail-title">
-            <h4>{{snippet.title}}</h4>
+            <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
             <div class="detail-links">
                <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
             </div>
