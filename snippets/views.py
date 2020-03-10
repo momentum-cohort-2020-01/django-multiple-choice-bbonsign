@@ -22,6 +22,17 @@ def snippet_detail(request, snip_id):
 
 
 @login_required
+def fork(request, snip_id):
+    user = request.user
+    new_snippet = Snippet.objects.get(id=snip_id)
+    new_snippet.pk = None
+    new_snippet.owner = user
+    new_snippet.parent = Snippet.objects.get(id=snip_id)
+    new_snippet.save()
+    return redirect('snippet_detail', new_snippet.id)
+
+
+@login_required
 def add_snippet(request):
     if request.method == 'POST':
         form = SnippetForm(request.POST)

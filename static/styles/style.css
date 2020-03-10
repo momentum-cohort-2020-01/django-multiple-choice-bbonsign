@@ -52,8 +52,7 @@ a {
   margin-right: 1rem;
 }
 
-.search {
-}
+.search {}
 
 .snippet-list {
   display: flex;
@@ -72,10 +71,17 @@ a {
   font-size: .8rem;
 }
 
-.snippet-title-preview {
+.preview-title {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.detail-title {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
 }
 
 .preview {
@@ -88,6 +94,10 @@ a {
 }
 
 .show-user {
+  text-align: center;
+}
+
+.user-home-title {
   text-align: center;
 }
 

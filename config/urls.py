@@ -9,6 +9,7 @@ urlpatterns = [
     path('accounts/', include('registration.backends.default.urls')),
     path('', views.user_home, name='user_home'),
     path('snippet/<int:snip_id>', views.snippet_detail, name='snippet_detail'),
+    path('fork/<int:snip_id>', views.fork, name='fork'),
     path('add-snippet', views.add_snippet, name='add_snippet'),
 ]
 

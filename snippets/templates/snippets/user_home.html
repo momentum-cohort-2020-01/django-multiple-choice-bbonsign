@@ -2,13 +2,15 @@
 
 {% block content %}
 
+<h2 class="user-home-title">My snippets</h2>
 <div class="snippet-list">
-
   {% for snippet in snippets %}
   <div class="snippet-item">
     <a href="{% url 'snippet_detail' snippet.id %}">
-      <h4 class="snippet-title-preview"><span>{{snippet.title}}</span> <span class="preview">Preview</span></h4>
-
+      <div class="preview-title">
+        <h4 class="snippet-title-preview">{{snippet.title}}</h4>
+        <span class="preview">Preview</span>
+      </div>
       <figure class="code-fig">
         <pre class="line-numbers"><code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview|safe}}</code>
         </pre>
