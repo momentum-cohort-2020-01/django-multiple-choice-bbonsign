@@ -41,6 +41,8 @@ class Snippet(models.Model):
                                  related_name='snippets',
                                  help_text='Programming language of the snippet')
     code = models.TextField(help_text='The code of the snippet')
+    code = models.TextField(help_text='Optional description of the code',
+                            blank=True, null=True)
     copies = models.PositiveIntegerField(default=0,
                                          help_text='Number of times a user has copied the snippet to clipboard')
     tags = models.ManyToManyField(to=Tag, related_name='snippets', blank=True)
@@ -69,15 +71,3 @@ class Snippet(models.Model):
             if count < limit:
                 preview += char
         return preview
-
-#     @property
-#     def descendent_tree(self):
-#         for snippet in self.children
-
-
-# class Tree:
-#     def __init__(self, children):
-#         self.children = children
-
-#     def __str__(self):
-#         return f"Tree with {len(self.children)} children"
