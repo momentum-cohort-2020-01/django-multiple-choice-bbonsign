@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
-
+{% block meta %}
+<script src="{% static 'js/detail_page.js' %}" defer></script>
+{% endblock meta %}
 
 {% block content %}
 {% if message %}
@@ -13,6 +16,12 @@
             <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
             <div class="detail-links">
                <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
+               <button class="btn visible" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet" title="Copy the snippet">
+                   <i class="fas fa-clipboard-list"></i>
+               </button>
+               <button class="btn hidden" data-clipboard-text="{{snippet.code}}">
+                <i class=" fas fa-clipboard-check"></i>
+            </button>
             </div>
         </div>
 

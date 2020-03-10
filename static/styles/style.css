@@ -81,7 +81,17 @@ a {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
 
+.detail-links {
+  font-size: large;
+}
+.detail-links button{
+  font-size: large;
+}
+
+.hidden {
+  display: none;
 }
 
 .preview {
@@ -117,3 +127,4 @@ a {
   font-weight: 500;
   margin-left: 2rem;
 }
+
