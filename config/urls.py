@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
     path('', views.user_home, name='user_home'),
+    path('add-snippet', views.add_snippet, name='add_snippet'),
 ]
 
 if settings.DEBUG:

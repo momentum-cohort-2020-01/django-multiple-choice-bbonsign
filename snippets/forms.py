@@ -1,6 +1,10 @@
 from django import forms
 
-# from .models import
+from .models import Snippet
 
 
-# class SampleForm(forms.ModelForm):
+class SnippetForm(forms.ModelForm):
+
+    class Meta:
+        model = Snippet
+        fields = ('title', 'language', 'code', 'tags', 'public',)
