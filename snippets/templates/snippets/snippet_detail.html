@@ -11,32 +11,32 @@
 {% endif %}
 
 <div class="user-home-container">
-    <div class="snippet-item">
-        <div class="detail-title">
-            <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
-            <div class="detail-links">
-                <button class="btn" aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
-                    <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
-                </button>
-                <button class="btn visible copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
-                    title="Copy the snippet">
-                    <i class="fas fa-clipboard-list"></i>
-                </button>
-                <button class="btn green hidden" data-clipboard-text="{{snippet.code}}">
-                    <i class=" fas fa-clipboard-check"></i>
-                </button>
-                <button class="btn" aria-label="Edit snippet" title="Edit snippet">
-                    <a href="#"><i class="fas fa-edit"></i></a>
-                </button>
-            </div>
-        </div>
+  <div class="snippet-item">
+    <div class="detail-title">
+      <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
+      <div class="detail-links">
+        <button class="btn" aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
+          <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
+        </button>
+        <button class="btn visible copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
+          title="Copy the snippet">
+          <i class="fas fa-clipboard-list"></i>
+        </button>
+        <button class="btn green hidden" data-clipboard-text="{{snippet.code}}">
+          <i class=" fas fa-clipboard-check"></i>
+        </button>
+        <button class="btn" aria-label="Edit snippet" title="Edit snippet">
+          <a href="#"><i class="fas fa-edit"></i></a>
+        </button>
+      </div>
+    </div>
 
-        <figure class="code-fig">
-            <pre class="line-numbers">
+    <figure class="code-fig">
+      <pre class="line-numbers">
 <code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code}}</code>
 </pre>
-        </figure>
-    </div>
+    </figure>
+  </div>
 </div>
 
 {% endblock content %}
