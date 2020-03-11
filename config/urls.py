@@ -10,7 +10,8 @@ urlpatterns = [
     path('', views.user_home, name='user_home'),
     path('snippet/<int:snip_id>', views.snippet_detail, name='snippet_detail'),
     path('fork/<int:snip_id>', views.fork, name='fork'),
-    path('add-snippet', views.add_snippet, name='add_snippet'),
+    path('add-snippet/', views.add_snippet, name='add_snippet'),
+    path('all-public/', views.all_public, name='all_public'),
 ]
 
 if settings.DEBUG:

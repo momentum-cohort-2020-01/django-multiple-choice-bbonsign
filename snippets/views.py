@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 from users.models import User
 from .models import Snippet, Tag
@@ -50,3 +53,23 @@ def add_snippet(request):
         form = SnippetForm()
         context = {'form': form}
         return render(request, 'snippets/form.html', context=context)
+
+
+# @login_required
+@csrf_exempt
+@require_GET
+def all_public(request):
+    snippets = Snippet.objects.filter(public=True)
+    data = {}
+    for snippet in snippets:
+        data[snippet.id] = {
+            'title': snippet.title,
+            'code': snippet.code,
+            'description': snippet.description,
+            'language': snippet.language.name
+        }
+    return JsonResponse({
+        "status": "ok",
+        "snippets": data
+    })
+    # return JsonResponse({ "status": "ok" })

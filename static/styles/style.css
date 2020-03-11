@@ -90,7 +90,7 @@ a {
   width: 40%;
   min-width: 350px;
   padding: 1rem;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
   font-size: .8rem;
 }
@@ -130,7 +130,7 @@ a {
 }
 
 .snippet-list .snippet-item:hover {
-  box-shadow: 0 0 10px rgba(9, 0, 141, 0.712);
+  box-shadow: 0 0 7px rgba(9, 0, 141, 0.712);
 }
 
 .show-user {
