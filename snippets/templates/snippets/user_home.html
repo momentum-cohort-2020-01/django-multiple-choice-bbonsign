@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<script src="{% static 'js/list_page.js' %}" defer></script>
+{% endblock meta %}
 
 {% block content %}
 
 <h2 class="user-home-title">My snippets</h2>
 <div class="snippet-list">
+
   {% for snippet in snippets %}
   <div class="snippet-item">
     <a href="{% url 'snippet_detail' snippet.id %}">
