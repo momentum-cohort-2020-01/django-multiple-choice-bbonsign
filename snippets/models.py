@@ -41,7 +41,7 @@ class Snippet(models.Model):
                                  related_name='snippets',
                                  help_text='Programming language of the snippet')
     code = models.TextField(help_text='The code of the snippet')
-    code = models.TextField(help_text='Optional description of the code',
+    description = models.TextField(help_text='Optional description of the code',
                             blank=True, null=True)
     copies = models.PositiveIntegerField(default=0,
                                          help_text='Number of times a user has copied the snippet to clipboard')
