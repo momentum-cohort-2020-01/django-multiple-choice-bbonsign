@@ -25,8 +25,6 @@ def snippet_detail(request, snip_id):
 def fork(request, snip_id):
     user = request.user
     snippet = Snippet.objects.get(id=snip_id)
-    if user == snippet.owner:
-        return redirect('user_home')
     new_snippet = snippet
     new_snippet.pk = None
     new_snippet.owner = user
