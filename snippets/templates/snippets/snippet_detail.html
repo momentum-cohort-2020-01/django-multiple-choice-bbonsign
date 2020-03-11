@@ -15,10 +15,10 @@
         <div class="detail-title">
             <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
             <div class="detail-links">
-                <button aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
+                <button class="btn" aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
                     <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
                 </button>
-                <button class="btn visible" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
+                <button class="btn visible copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
                     title="Copy the snippet">
                     <i class="fas fa-clipboard-list"></i>
                 </button>

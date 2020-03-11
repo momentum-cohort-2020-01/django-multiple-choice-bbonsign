@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{% static 'styles/style.css' %}">
   <script src="{% static 'js/prism.js' %}" defer></script>
   {% block title %}
-    <title>SnippetSnap</title>
+  <title>SnippetSnap</title>
   {% endblock title %}
 </head>
 
@@ -27,8 +27,11 @@
 
     {% if user.is_authenticated %}
     <div class="logged-in">
-      <a class="logout"  href="/accounts/logout">Logout</a>
-      <input class="search" placeholder="Find a snippet...">
+      <a class="logout" href="/accounts/logout">Logout</a>
+      <form class="search-form">
+        <input class="search" type="text" placeholder="Find a snippet...">
+        <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
+      </form>
     </div>
     {% else %}
     <div class="logged-out">
