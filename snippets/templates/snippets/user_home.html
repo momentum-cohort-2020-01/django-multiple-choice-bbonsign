@@ -1,9 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
-
-{% block meta %}
-<script src="{% static 'js/list_page.js' %}" defer></script>
-{% endblock meta %}
 
 {% block content %}
 
@@ -18,7 +13,7 @@
         <span class="preview">Preview</span>
       </div>
       <figure class="code-fig">
-        <pre class="line-numbers"><code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview|safe}}</code>
+        <pre class="line-numbers"><code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.preview}}</code>
         </pre>
       </figure>
     </a>

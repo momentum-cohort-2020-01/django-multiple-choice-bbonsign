@@ -25,12 +25,15 @@
                 <button class="btn green hidden" data-clipboard-text="{{snippet.code}}">
                     <i class=" fas fa-clipboard-check"></i>
                 </button>
+                <button class="btn" aria-label="Edit snippet" title="Edit snippet">
+                    <a href="#"><i class="fas fa-edit"></i></a>
+                </button>
             </div>
         </div>
 
         <figure class="code-fig">
             <pre class="line-numbers">
-<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code|safe}}</code>
+<code class="lang-{{snippet.language.name}}" data-lang="{{snippet.language.name}}">{{snippet.code}}</code>
 </pre>
         </figure>
     </div>
