@@ -26,17 +26,17 @@
     <h1 class="title"><a href="{% url 'user_home' %}">>SnippetSnap</a></h1>
 
     {% if user.is_authenticated %}
-    <div class="logged-in">
+    <div class="header-links">
       <a class="logout" href="/accounts/logout">Logout</a>
+      <button class="btn search-btn" type="submit">All public snippets</i></button>
       <form class="search-form">
         <input class="search" type="text" placeholder="Find a snippet...">
         <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>
     {% else %}
-    <div class="logged-out">
+    <div class="header-links">
       <a href="/accounts/register">Register</a>
-      |
       <a href="/accounts/login">Login</a>
     </div>
     {% endif %}
