@@ -34,9 +34,9 @@ def fork(request, snip_id):
     new_snippet.save()
     snippet.copies += 1
     snippet.save()
-    context = {'snippet': new_snippet, 'message': "You're cloned snippet:"}
-    return render(request, 'snippets/snippet_detail.html', context=context)
-    # return redirect('snippet_detail', new_snippet.id)
+    # context = {'snippet': new_snippet, 'message': "You're cloned snippet:"}
+    # return render(request, 'snippets/snippet_detail.html', context=context)
+    return redirect('snippet_detail', new_snippet.id)
 
 
 @login_required

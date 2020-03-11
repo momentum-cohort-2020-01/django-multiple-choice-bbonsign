@@ -16,7 +16,7 @@
             <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
             <div class="detail-links">
                 <button aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
-                    <i class="fas fa-code-branch"></i>
+                    <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
                 </button>
                 <button class="btn visible" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
                     title="Copy the snippet">
