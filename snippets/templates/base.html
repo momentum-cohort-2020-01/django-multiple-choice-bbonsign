@@ -13,8 +13,8 @@
   {% load static %}
   <link rel="stylesheet" href="{% static 'styles/prism.css' %}">
   <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-  <script src="{% static 'js/prism.js' %}" defer></script>
   <script src="{% static 'js/search.js' %}" defer></script>
+  <script id="prism-js" src="{% static 'js/prism.js' %}" defer></script>
   {% block title %}
   <title>SnippetSnap</title>
   {% endblock title %}
@@ -32,7 +32,8 @@
       <a class="logout" href="/accounts/logout">Logout</a>
       <button id="all-pub-btn" class="btn search-btn" type="submit">All public snippets</button>
       <form class="search-form">
-        <input class="search" type="text" placeholder="Find a snippet...">
+        <!-- <label for="search">Search for a snippet</label> -->
+        <input id="search" class="search" type="text" placeholder="Find a snippet...">
         <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>

@@ -55,10 +55,11 @@ def add_snippet(request):
         return render(request, 'snippets/form.html', context=context)
 
 
-# @login_required
+@login_required
 @csrf_exempt
 @require_GET
 def all_public(request):
+    print(request.method)
     snippet_set = Snippet.objects.filter(public=True)
     snippets = {}
     for snippet in snippet_set:
@@ -71,5 +72,5 @@ def all_public(request):
         }
     return JsonResponse({
         "status": "ok",
-        "data": snippets
+        "snippets": snippets
     })
