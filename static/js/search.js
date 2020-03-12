@@ -21,6 +21,10 @@ function getAllPublicSnippets (event) {
 function renderPreviews (snippets) {
   const contentArea = q('#content')
   contentArea.innerHTML = ''
+  const listContainer = document.createElement('div')
+  contentArea.appendChild(listContainer)
+  listContainer.classList.add('snippet-list')
+  listContainer.innerHTML = ''
 
   for (const [id, info] of Object.entries(snippets)) {
     const preview = `<div class="snippet-item">
@@ -35,7 +39,7 @@ function renderPreviews (snippets) {
 </figure>
 </a>
 </div>`
-    contentArea.innerHTML += preview
+    listContainer.innerHTML += preview
   }
   reloadPrism()
 }
