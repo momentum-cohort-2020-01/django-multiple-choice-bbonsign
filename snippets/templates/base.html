@@ -28,8 +28,9 @@
 
     {% if user.is_authenticated %}
     <div class="header-links">
+      <a href="{%url 'add_snippet' %}" title="Add a snippet"><i class="fas fa-plus"></i></a>
       <a class="logout" href="/accounts/logout">Logout</a>
-      <button id="all-pub-btn" class="btn search-btn" type="submit">All public snippets</i></button>
+      <button id="all-pub-btn" class="btn search-btn" type="submit">All public snippets</button>
       <form class="search-form">
         <input class="search" type="text" placeholder="Find a snippet...">
         <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
