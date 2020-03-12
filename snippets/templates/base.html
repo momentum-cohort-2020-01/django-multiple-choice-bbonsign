@@ -44,10 +44,10 @@
   </header>
   {% endblock header %}
 
-
-  {% block content %}
-  {% endblock content %}
-
+  <div id="content">
+    {% block content %}
+    {% endblock content %}
+  </div>
 
   {% if user.is_authenticated %}
   <div class="show-user">Logged in as: {{user.username}}</div>

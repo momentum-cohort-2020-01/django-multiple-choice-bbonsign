@@ -59,17 +59,17 @@ def add_snippet(request):
 @csrf_exempt
 @require_GET
 def all_public(request):
-    snippets = Snippet.objects.filter(public=True)
-    data = {}
-    for snippet in snippets:
-        data[snippet.id] = {
+    snippet_set = Snippet.objects.filter(public=True)
+    snippets = {}
+    for snippet in snippet_set:
+        snippets[snippet.id] = {
             'title': snippet.title,
             'code': snippet.code,
+            'preview': snippet.preview,
             'description': snippet.description,
             'language': snippet.language.name
         }
     return JsonResponse({
         "status": "ok",
-        "snippets": data
+        "data": snippets
     })
-    # return JsonResponse({ "status": "ok" })
