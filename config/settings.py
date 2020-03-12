@@ -152,8 +152,9 @@ INTERNAL_IPS = [
 ]
 
 # For django-registration-redux
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-ACCOUNT_ACTIVATION_DAYS = 1
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# ACCOUNT_ACTIVATION_DAYS = 1
+REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
 
 # Configure Django App for Heroku.
