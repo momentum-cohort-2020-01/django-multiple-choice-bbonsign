@@ -8,6 +8,7 @@
   --link-color: rgb(94, 71, 121);
   --btn-background: rgb(240, 240, 240);
   --btn-bg-hover: rgb(210, 217, 248);
+  --warning-color: rgb(145, 24, 24);
 }
 
 * {
@@ -57,6 +58,13 @@ a {
 
 .logout {
   margin-bottom: 2px;
+}
+
+.warning {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--warning-color);
 }
 
 .btn {

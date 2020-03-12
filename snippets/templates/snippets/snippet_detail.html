@@ -5,10 +5,10 @@
 <script src="{% static 'js/detail_page.js' %}" defer></script>
 {% endblock meta %}
 
+
 {% block content %}
-{% if message %}
-<div class="message">{{message}}</div>
-{% endif %}
+
+{% if viewable %}
 
 <div class="user-home-container">
   <div class="snippet-item">
@@ -41,5 +41,11 @@
     </div>
   </div>
 </div>
+
+
+{% else %}
+<div class="warning">This snippet is not public</div>
+{% endif %}
+
 
 {% endblock content %}

@@ -20,7 +20,8 @@ def user_home(request):
 @login_required
 def snippet_detail(request, snip_id):
     snippet = Snippet.objects.get(id=snip_id)
-    context = {'snippet': snippet}
+    viewable = request.user == snippet.owner
+    context = {'snippet': snippet, 'viewable': viewable }
     return render(request, 'snippets/snippet_detail.html', context=context)
 
 
