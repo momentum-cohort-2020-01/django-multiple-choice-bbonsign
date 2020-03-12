@@ -152,7 +152,6 @@ INTERNAL_IPS = [
 ]
 
 # For django-registration-redux
-ACCOUNT_ACTIVATION_DAYS = 1
 REGISTRATION_AUTO_LOGIN = True
 
 

@@ -6,7 +6,7 @@ from snippets import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.default.urls')),
+    path('accounts/', include('registration.backends.simple.urls')),
     path('', views.user_home, name='user_home'),
     path('snippet/<int:snip_id>', views.snippet_detail, name='snippet_detail'),
     path('fork/<int:snip_id>', views.fork, name='fork'),
