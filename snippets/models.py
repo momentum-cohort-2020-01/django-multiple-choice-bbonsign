@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import CheckConstraint, Q
+# from django.db.models import CheckConstraint, Q
 from django.utils.text import slugify
 from users.models import User
 

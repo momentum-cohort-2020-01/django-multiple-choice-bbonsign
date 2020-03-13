@@ -57,6 +57,4 @@ function q (selector) {
   return document.querySelector(selector)
 }
 
-
 window.addEventListener('DOMContentLoaded', main)
-
