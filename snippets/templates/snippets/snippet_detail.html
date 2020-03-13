@@ -7,25 +7,32 @@
 
 {% block content %}
 
-{% if viewable %}
+{% if snippet.public or snippet.owner == request.user %}
+
+<div id="data" data-id="{{snippet.id}}"></div>
 
 <div class="user-home-container">
   <div class="snippet-item">
     <div class="detail-title">
-      <h4>{{snippet.owner.username}}'s {{snippet.title}}</h4>
+      <h4>{{snippet.title}} <span class="preview">-- Author: {{snippet.owner.username}}</span></h4>
       <div class="detail-links">
-        <button class="btn" aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
-          <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
-        </button>
-        <button class="btn visible copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
+        {% if snippet.owner == request.user %}
+          <button class="btn delete" aria-label="delete snippet" title="Delete snippet">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button class="btn edit" aria-label="Edit snippet" title="Edit snippet">
+            <a href="#"><i class="fas fa-edit"></i></a>
+          </button>
+        {% endif %}
+        <button class="btn copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
           title="Copy the snippet">
           <i class="fas fa-clipboard-list"></i>
         </button>
-        <button class="btn green hidden" data-clipboard-text="{{snippet.code}}">
+        <button class="btn copied green hidden" data-clipboard-text="{{snippet.code}}">
           <i class=" fas fa-clipboard-check"></i>
         </button>
-        <button class="btn" aria-label="Edit snippet" title="Edit snippet">
-          <a href="#"><i class="fas fa-edit"></i></a>
+        <button class="btn" aria-label="Fork this snippet as your own" title="Fork this snippet as your own">
+          <a href="{% url 'fork' snippet.id %}"><i class="fas fa-code-branch"></i></a>
         </button>
       </div>
     </div>

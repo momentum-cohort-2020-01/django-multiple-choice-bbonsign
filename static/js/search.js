@@ -13,7 +13,7 @@ function getAllPublicSnippets (event) {
   fetch('/all-public/')
     .then(resp => resp.json())
     .then(jsonData => {
-      console.log(jsonData)
+
       renderPreviews(jsonData.snippets)
     })
 }
@@ -41,6 +41,7 @@ function renderPreviews (snippets) {
 </div>`
     listContainer.innerHTML += preview
   }
+  window.history.pushState('/', 'All public snippets', 'all-public')
   reloadPrism()
 }
 

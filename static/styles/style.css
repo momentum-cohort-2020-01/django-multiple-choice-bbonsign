@@ -5,7 +5,7 @@
   --main-text-color: rgb(0, 16, 37);
   --description-color: #288691;
   --accent-color: rgb(83, 178, 216);
-  --link-color: rgb(94, 71, 121);
+  --link-color: rgb(70, 52, 119);
   --btn-background: rgb(240, 240, 240);
   --btn-bg-hover: rgb(210, 217, 248);
   --warning-color: rgb(145, 24, 24);
@@ -68,12 +68,20 @@ a {
 }
 
 .btn {
-  float: right;
+  /* float: right; */
   padding: 6px 10px;
   font-size: 17px;
   border: none;
   cursor: pointer;
   background-color: var(--btn-background);
+}
+
+.btn.delete {
+  color: rgb(172, 7, 7);
+}
+
+.btn.copy {
+  color:var(--link-color);
 }
 
 .btn:hover {
@@ -107,6 +115,10 @@ a {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.confirm {
+  text-align: center;
 }
 
 .detail-title {

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 
 from users.models import User
@@ -20,9 +20,30 @@ def user_home(request):
 @login_required
 def snippet_detail(request, snip_id):
     snippet = Snippet.objects.get(id=snip_id)
-    viewable = request.user == snippet.owner
-    context = {'snippet': snippet, 'viewable': viewable }
+    context = {'snippet': snippet}
     return render(request, 'snippets/snippet_detail.html', context=context)
+
+
+@login_required
+@csrf_exempt
+@require_http_methods(['DELETE'])
+def snippet_delete(request, snip_id):
+    snippet = Snippet.objects.get(id=snip_id)
+    if snippet.owner == request.user:
+        snippet.delete()
+        return JsonResponse({
+            "status": "ok",
+            "data": "Successfully deleted"
+        })
+    else:
+        return JsonResponse({
+            "status": "ok",
+            "data": "You do not have permission to delete this snippet"
+        })
+
+@login_required
+def snippet_edit(request, snip_id):
+    pass
 
 
 @login_required
