@@ -153,6 +153,7 @@ INTERNAL_IPS = [
 
 # For django-registration-redux
 REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/'
 
 
 # Configure Django App for Heroku.
