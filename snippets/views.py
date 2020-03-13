@@ -86,6 +86,7 @@ def all_public(request):
     for snippet in snippet_set:
         snippets[snippet.id] = {
             'title': snippet.title,
+            'owner': snippet.owner.username,
             'code': snippet.code,
             'preview': snippet.preview,
             'description': snippet.description,

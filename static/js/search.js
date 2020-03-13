@@ -30,7 +30,7 @@ function renderPreviews (snippets) {
     const preview = `<div class="snippet-item">
 <a href="/snippet/${id}">
 <div class="preview-title">
-<h4 class="snippet-title-preview">${info.title}</h4>
+<h4 class="snippet-title-preview">${info.title}<span class="preview">-- Author: ${info.owner}</span></h4>
 <span class="preview">Preview</span>
 </div>
 <figure class="code-fig">
