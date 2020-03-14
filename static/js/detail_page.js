@@ -1,4 +1,4 @@
-/* globals fetch */
+/* globals fetch, confirm */
 
 function main () {
   new ClipboardJS('.btn');
@@ -22,34 +22,37 @@ function switchHidden (hidden, visible) {
 }
 
 function deleteEvent (event) {
-  let confirmHTML
-  if (q('.confirm') == null) {
-    confirmHTML = `
-    <div class="confirm">
-    Are you sure you want to permenently delete this snippet?
-    <button class="btn delete confirm">
-      Yes
-    </button>
-    <button class="btn cancel">
-      Cancel
-    </button>
-  </div>`
+  const result = confirm('Do you want to permanently delete this snippet?')
+  if (result) {
+    deleteAJAX()
   }
-  else {
-    confirmHTML = ''
-  }
+  // let confirmHTML
+  // if (q('.confirm') == null) {
+  //   confirmHTML = `
+  //   <div class="confirm">
+  //   Are you sure you want to permenently delete this snippet?
+  //   <button class="btn delete confirm">
+  //     Yes
+  //   </button>
+  //   <button class="btn cancel">
+  //     Cancel
+  //   </button>
+  // </div>`
+  // }
+  // else {
+  //   confirmHTML = ''
+  // }
 
-  q('#content').insertAdjacentHTML('afterbegin', confirmHTML)
-  q('.btn.delete.confirm').addEventListener('click', deleteAJAX)
-  q('.btn.cancel').addEventListener('click', cancelDelete)
-  function cancelDelete (e) {
-    q('.confirm').remove()
-  }
+  // q('#content').insertAdjacentHTML('afterbegin', confirmHTML)
+  // q('.btn.delete.confirm').addEventListener('click', deleteAJAX)
+  // q('.btn.cancel').addEventListener('click', cancelDelete)
+  // function cancelDelete (e) {
+  //   q('.confirm').remove()
+  // }
 
-  function deleteAJAX (e) {
+  function deleteAJAX () {
     return fetch(`/snippet/${q('#data').dataset.id}/delete/`, { method: 'DELETE' })
       .then((resp) => {
-        console.log(resp.json())
         return resp.json()
       })
       .then(jsonResp => {
