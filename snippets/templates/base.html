@@ -32,9 +32,9 @@
       <a href="{%url 'add_snippet' %}" title="Add a snippet"><i class="fas fa-plus"></i></a>
       <a class="logout" href="/accounts/logout">Logout</a>
       <button id="all-pub-btn" class="btn search-btn" type="submit">All public snippets</button>
-      <form class="search-form">
-        <!-- <label for="search">Search for a snippet</label> -->
-        <input id="search" class="search" type="text" placeholder="Find a snippet...">
+      <form class="search-bar">
+        {% csrf_token %}
+        <input id="search" class="search" type="text" placeholder="Find a snippet..." title="Snippet keyword search">
         <button class="btn search-btn" type="submit"><i class="fa fa-search"></i></button>
       </form>
     </div>

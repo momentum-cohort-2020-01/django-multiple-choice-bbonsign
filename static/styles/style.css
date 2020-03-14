@@ -208,7 +208,7 @@ a {
 
 @media screen and (max-width: 600px) {
 
-  .header a, .header input[type=text], .header .search-form button, .header-links, .header-links button {
+  .header a, .header input[type=text], .header .search-bar button, .header-links, .header-links button {
     display: block;
     text-align: left;
     width: 100%;
