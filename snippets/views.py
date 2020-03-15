@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 
 from users.models import User
 from .models import Snippet, Tag
@@ -25,6 +26,11 @@ def snippet_detail(request, snip_id):
 
 
 @login_required
+def search(request):
+    pass
+
+
+@login_required
 @csrf_exempt
 @require_http_methods(['DELETE'])
 def snippet_delete(request, snip_id):
@@ -41,9 +47,38 @@ def snippet_delete(request, snip_id):
             "data": "You do not have permission to delete this snippet"
         })
 
+
 @login_required
 def snippet_edit(request, snip_id):
-    pass
+    snippet = Snippet.objects.get(id=snip_id)
+    if snippet.owner != request.user:
+        return redirect('/')
+    if request.method == 'POST':
+        form = SnippetForm(request.POST, instance=snippet)
+        if form.is_valid():
+            # snippet = form.save(commit=False)
+            # snippet.owner = request.user
+            snippet.save()
+            return redirect(f'/snippet/{snip_id}')
+    else:
+        form = SnippetForm(instance=snippet)
+        context = {'form': form}
+        return render(request, 'snippets/form.html', context=context)
+
+
+@login_required
+def add_snippet(request):
+    if request.method == 'POST':
+        form = SnippetForm(request.POST)
+        if form.is_valid():
+            snippet = form.save(commit=False)
+            snippet.owner = request.user
+            snippet.save()
+            return redirect('user_home')
+    else:
+        form = SnippetForm()
+        context = {'form': form}
+        return render(request, 'snippets/form.html', context=context)
 
 
 @login_required
@@ -63,22 +98,7 @@ def fork(request, snip_id):
 
 
 @login_required
-def add_snippet(request):
-    if request.method == 'POST':
-        form = SnippetForm(request.POST)
-        if form.is_valid():
-            snippet = form.save(commit=False)
-            snippet.owner = request.user
-            snippet.save()
-            return redirect('user_home')
-    else:
-        form = SnippetForm()
-        context = {'form': form}
-        return render(request, 'snippets/form.html', context=context)
-
-
-@login_required
-@csrf_exempt
+# @csrf_exempt
 @require_GET
 def all_public(request):
     snippet_set = Snippet.objects.filter(public=True)

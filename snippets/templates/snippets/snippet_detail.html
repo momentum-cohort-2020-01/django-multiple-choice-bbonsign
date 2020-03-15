@@ -21,7 +21,7 @@
             <i class="fas fa-trash-alt"></i>
           </button>
           <button class="btn edit" aria-label="Edit snippet" title="Edit snippet">
-            <a href="#"><i class="fas fa-edit"></i></a>
+            <a href="{% url 'snippet_edit' snippet.id %}"><i class="fas fa-edit"></i></a>
           </button>
         {% endif %}
         <button class="btn copy" data-clipboard-text="{{snippet.code}}" aria-label="Copy the snippet"
