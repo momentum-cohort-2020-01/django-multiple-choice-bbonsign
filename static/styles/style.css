@@ -206,6 +206,17 @@ a {
   color: var(--title-color);
 }
 
+.title-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.btn.add, .btn.add a {
+  background-color: var(--header-bg-color);
+  color: green;
+}
+
 @media screen and (max-width: 600px) {
 
   .header a, .header input[type=text], .header .search-bar button, .header-links, .header-links button {
@@ -223,5 +234,9 @@ a {
   .header input[type=text] {
     width: 100%
     border: 1px solid #ccc;
+  }
+
+  .header {
+    padding: 0;
   }
 }

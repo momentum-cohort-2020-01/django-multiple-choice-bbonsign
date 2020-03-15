@@ -25,11 +25,14 @@
 
   {% block header %}
   <header class="header">
-    <h1 class="title"><a href="{% url 'user_home' %}">>SnippetSnap</a></h1>
+    <div class="title-container">
+      <h1 class="title"><a href="{% url 'user_home' %}">>SnippetSnap</a></h1>
+      <button class="btn add"><a href="{%url 'add_snippet' %}" title="Add a snippet"><i class="fas fa-plus"></i></a></button>
+    </div>
+
 
     {% if user.is_authenticated %}
     <div class="header-links">
-      <a href="{%url 'add_snippet' %}" title="Add a snippet"><i class="fas fa-plus"></i></a>
       <a class="logout" href="/accounts/logout">Logout</a>
       <button id="all-pub-btn" class="btn search-btn" type="submit">All public snippets</button>
       <form class="search-bar">
