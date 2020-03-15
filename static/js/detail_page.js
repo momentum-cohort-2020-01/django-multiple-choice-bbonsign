@@ -26,29 +26,6 @@ function deleteEvent (event) {
   if (result) {
     deleteAJAX()
   }
-  // let confirmHTML
-  // if (q('.confirm') == null) {
-  //   confirmHTML = `
-  //   <div class="confirm">
-  //   Are you sure you want to permenently delete this snippet?
-  //   <button class="btn delete confirm">
-  //     Yes
-  //   </button>
-  //   <button class="btn cancel">
-  //     Cancel
-  //   </button>
-  // </div>`
-  // }
-  // else {
-  //   confirmHTML = ''
-  // }
-
-  // q('#content').insertAdjacentHTML('afterbegin', confirmHTML)
-  // q('.btn.delete.confirm').addEventListener('click', deleteAJAX)
-  // q('.btn.cancel').addEventListener('click', cancelDelete)
-  // function cancelDelete (e) {
-  //   q('.confirm').remove()
-  // }
 
   function deleteAJAX () {
     return fetch(`/snippet/${q('#data').dataset.id}/delete/`, { method: 'DELETE' })
