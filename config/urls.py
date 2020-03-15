@@ -16,6 +16,7 @@ urlpatterns = [
     path('fork/<int:snip_id>', views.fork, name='fork'),
     path('add-snippet/', views.add_snippet, name='add_snippet'),
     path('all-public/', views.all_public, name='all_public'),
+    path('search/', views.search, name='search'),
 ]
 
 if settings.DEBUG:

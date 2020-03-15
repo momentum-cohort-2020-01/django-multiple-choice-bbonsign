@@ -57,7 +57,7 @@ class Snippet(models.Model):
                                help_text='The snippet this is forked from')
 
     def __str__(self):
-        return f"{self.owner.id}'s {self.language.name} snippet:{self.id}"
+        return f"{self.owner.username}'s {self.language.name} snippet:{self.id}"
 
     @property
     def preview(self):

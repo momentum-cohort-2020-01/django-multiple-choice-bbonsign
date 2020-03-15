@@ -27,7 +27,18 @@ def snippet_detail(request, snip_id):
 
 @login_required
 def search(request):
-    pass
+    param = request.GET.get('q')
+    public_snippets = Snippet.objects.filter(public=True)
+    query = SearchQuery(param, search_type='plain')
+    vector = SearchVector('language__name', weight='A')+SearchVector('title', weight='C')+SearchVector(
+        'code',  weight='B')+SearchVector('description',  weight='D')+SearchVector('tags__name', weight='D')
+    rank = SearchRank(vector, query)
+    results = public_snippets.annotate(
+        rank=rank).filter(rank__gte=0.05).order_by('-rank')
+    return JsonResponse({
+        "status": "ok",
+        "snippets": prepare_snippets(results)
+    })
 
 
 @login_required
@@ -101,18 +112,24 @@ def fork(request, snip_id):
 # @csrf_exempt
 @require_GET
 def all_public(request):
-    snippet_set = Snippet.objects.filter(public=True)
+    snippets = Snippet.objects.filter(public=True)
+    return JsonResponse({
+        "status": "ok",
+        "snippets": prepare_snippets(snippets)
+    })
+
+
+def prepare_snippets(snippet_set):
     snippets = {}
     for snippet in snippet_set:
         snippets[snippet.id] = {
+            'id': snippet.id,
             'title': snippet.title,
             'owner': snippet.owner.username,
             'code': snippet.code,
             'preview': snippet.preview,
             'description': snippet.description,
-            'language': snippet.language.name
+            'language': snippet.language.name,
+            'copies': snippet.copies,
         }
-    return JsonResponse({
-        "status": "ok",
-        "snippets": snippets
-    })
+    return snippets
