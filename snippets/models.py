@@ -71,29 +71,3 @@ class Snippet(models.Model):
             if count < limit:
                 preview += char
         return preview
-
-
-# ====================================================
-
-def find_root(snippet):
-    current = snippet
-    parent = snippet.parent
-    while parent is not None:
-        current = parent
-        parent = parent.parent
-    return current
-
-
-def descendent_tree(snippet):
-    if snippet is None:
-        return None
-    child_list = [descendent_tree(child) for child in snippet.children.all()]
-    return {'snippet': snippet, 'children': child_list}
-
-
-def print_tree(tree, n):
-    if tree is None:
-        return
-    print('->'*n+str(tree['snippet']))
-    for child in tree['children']:
-        print_tree(child, n+1)

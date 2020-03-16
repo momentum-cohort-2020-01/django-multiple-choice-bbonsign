@@ -122,14 +122,79 @@ def all_public(request):
 def prepare_snippets(snippet_set):
     snippets = {}
     for snippet in snippet_set:
-        snippets[snippet.id] = {
-            'id': snippet.id,
-            'title': snippet.title,
-            'owner': snippet.owner.username,
-            'code': snippet.code,
-            'preview': snippet.preview,
-            'description': snippet.description,
-            'language': snippet.language.name,
-            'copies': snippet.copies,
-        }
+        snippets[snippet.id] = prepare_snippet(snippet)
     return snippets
+
+
+def prepare_snippet(snippet):
+    return {
+        'id': snippet.id,
+        'title': snippet.title,
+        'owner': snippet.owner.username,
+        'code': snippet.code,
+        'preview': snippet.preview,
+        'description': snippet.description,
+        'language': snippet.language.name,
+        'copies': snippet.copies,
+        'public': snippet.public,
+        # 'parentId': snippet.parent.id
+    }
+
+
+@login_required
+def tree(request, snip_id):
+    snippet = Snippet.objects.get(id=snip_id)
+    root = find_root(snippet)
+    tree = descendent_tree(root)
+    tree_string = family_tree(tree)
+    print(tree_string)
+    return JsonResponse({
+        'status': 'ok',
+        'tree': tree_string
+    })
+
+
+def find_root(snippet):
+    current = snippet
+    parent = snippet.parent
+    while parent is not None:
+        current = parent
+        parent = parent.parent
+    return current
+
+
+def descendent_tree(snippet):
+    if snippet is None:
+        return None
+    child_list = [descendent_tree(child) for child in snippet.children.all()]
+    return {'snippet': prepare_snippet(snippet), 'children': child_list}
+
+
+def print_tree(tree, n):
+    if tree is None:
+        return
+    print('--'*n+str(tree['snippet']))
+    for child in tree['children']:
+        print_tree(child, n+1)
+
+
+def show(tree, n):
+    result = '   |'*n
+    if n > 0:
+        result = result + "--->"
+    result = f"{result}{tree['snippet']['owner']}'s Snippet: {tree['snippet']['id']}\n"
+    if len(tree['children']) > 0:
+        for child in tree['children']:
+            result += show(child, n+1)
+    return result
+
+
+def family_tree(tree):
+    """
+    Returns the string representation.
+    """
+    if tree['snippet'] is None:
+        return ''
+    else:
+        result = show(tree, 0)
+        return result

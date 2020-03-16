@@ -1,12 +1,14 @@
-/* globals fetch, confirm */
+/* globals fetch, confirm, d3 */
 
 function main () {
-  new ClipboardJS('.btn');
+  new ClipboardJS('.btn')
   const copyButton = q('.btn.copy')
   const deleteButton = q('.btn.delete')
+  if (deleteButton !== null) {
+    deleteButton.addEventListener('click', deleteEvent)
+  }
   copyButton.addEventListener('click', copyEvent)
-  deleteButton.addEventListener('click', deleteEvent)
-
+  treeVis()
 }
 
 function copyEvent (event) {
@@ -43,8 +45,25 @@ function deleteEvent (event) {
   }
 }
 
+function treeVis () {
+  q('.btn.tree').addEventListener('click', (event) => {
+    fetch(`/tree/${q('#data').dataset.id}`)
+      .then(resp => resp.json())
+      .then(jsonResp => {
+        // console.log(jsonResp.tree)
+        q('.family-tree').insertAdjacentHTML('beforeend',
+          `<pre>
+${jsonResp.tree}
+</pre>`
+        )
+      })
+  })
+}
+
 function q (selector) {
   return document.querySelector(selector)
 }
 
 window.addEventListener('DOMContentLoaded', main)
+
+

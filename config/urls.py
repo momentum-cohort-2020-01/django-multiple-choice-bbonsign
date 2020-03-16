@@ -17,6 +17,7 @@ urlpatterns = [
     path('add-snippet/', views.add_snippet, name='add_snippet'),
     path('all-public/', views.all_public, name='all_public'),
     path('search/', views.search, name='search'),
+    path('tree/<int:snip_id>', views.tree, name='tree'),
 ]
 
 if settings.DEBUG:

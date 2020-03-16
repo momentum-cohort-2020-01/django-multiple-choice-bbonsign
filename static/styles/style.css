@@ -6,8 +6,8 @@
   --description-color: #288691;
   --accent-color: rgb(83, 178, 216);
   --link-color: rgb(70, 52, 119);
-  --btn-background: rgb(240, 240, 240);
-  --btn-bg-hover: rgb(210, 217, 248);
+  --btn-background: rgb(223, 238, 255);
+  --btn-bg-hover: rgb(210, 222, 248);
   --warning-color: rgb(145, 24, 24);
 }
 
@@ -81,7 +81,7 @@ a {
 }
 
 .btn.copy {
-  color:var(--link-color);
+  color: var(--link-color);
 }
 
 .btn:hover {
@@ -92,6 +92,10 @@ a {
   padding: 6px;
   border: none;
   font-size: 17px;
+}
+
+.search:focus {
+  border: 3px solid rgb(70, 172, 255);
 }
 
 .snippet-list {
@@ -179,7 +183,7 @@ a {
   margin-left: 2rem;
 }
 
-.header-links > button {
+.header-links>button {
   color: var(--title-color);
   background-color: rgb(0, 58, 112);
   text-align: center;
@@ -187,7 +191,7 @@ a {
   font-size: 17px;
 }
 
-.header-links > button:hover {
+.header-links>button:hover {
   background-color: rgb(0, 70, 136);
 }
 
@@ -217,25 +221,35 @@ a {
   color: green;
 }
 
-@media screen and (max-width: 600px) {
+.search-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+}
 
-  .header a, .header input[type=text], .header .search-bar button, .header-links, .header-links button {
+.family-tree {
+  margin: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .header a, .header input[type=text], .header, .header-links, .header-links>button {
     display: block;
     text-align: left;
     width: 100%;
     margin: 0;
     padding: 10px 14px;
   }
-
+  .search-bar {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+  }
   .header-links button {
     text-align: center;
   }
-
   .header input[type=text] {
-    width: 100%
-    border: 1px solid #ccc;
+    width: 100% border: 1px solid #ccc;
   }
-
   .header {
     padding: 0;
   }
