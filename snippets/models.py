@@ -42,7 +42,7 @@ class Snippet(models.Model):
                                  help_text='Programming language of the snippet')
     code = models.TextField(help_text='The code of the snippet')
     description = models.TextField(help_text='Optional description of the code',
-                            blank=True, null=True)
+                                   blank=True, null=True)
     copies = models.PositiveIntegerField(default=0,
                                          help_text='Number of times a user has copied the snippet to clipboard')
     tags = models.ManyToManyField(to=Tag, related_name='snippets', blank=True)
@@ -71,3 +71,29 @@ class Snippet(models.Model):
             if count < limit:
                 preview += char
         return preview
+
+
+# ====================================================
+
+def find_root(snippet):
+    current = snippet
+    parent = snippet.parent
+    while parent is not None:
+        current = parent
+        parent = parent.parent
+    return current
+
+
+def descendent_tree(snippet):
+    if snippet is None:
+        return None
+    child_list = [descendent_tree(child) for child in snippet.children.all()]
+    return {'snippet': snippet, 'children': child_list}
+
+
+def print_tree(tree, n):
+    if tree is None:
+        return
+    print('->'*n+str(tree['snippet']))
+    for child in tree['children']:
+        print_tree(child, n+1)
